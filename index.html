@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body
+        {
+            margin: 0px;
+            padding: 0px;
+        }
+        *
+        {
+            box-sizing: border-box;
+        }
+        .clock
+        {
+            width: 80%;
+            height:30vh;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            font-family: 'lato';
+        }
+    </style>
+</head>
+<body onload="clock()">
+    <br><br>
+    <h1 align="center">Current Time In Clock</h1>
+
+    <div class="clock" id="clock_place"></div>
+
+<script>
+
+    function clock()
+    {
+        var date_info = new Date();
+
+        var hours = (date_info.getHours()%12).toString();
+        var minutes = date_info.getMinutes().toString();
+        var seconds = date_info.getSeconds().toString();
+
+        if(hours.length < 2)
+        {
+            hours = "0"+hours;
+        }
+        if(minutes.length < 2)
+        {
+            minutes = "0"+minutes;
+        }
+        if(seconds.length < 2)
+        {
+            seconds = "0"+seconds;
+        }
+
+        document.getElementById('clock_place').innerHTML = hours+":"+minutes+":"+seconds;
+    }
+    setInterval(clock,1000);
+
+</script>    
+</body>
+</html>
